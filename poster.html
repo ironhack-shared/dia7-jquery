@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .basic-line {
+            /* background-color: grey; */
+            /* border: 1px solid black; */
+            position: absolute;
+        }
+    </style>
 </head>
+
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
+        function randomIntFromInterval(min, max) // min and max included
+        {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
         function getRandomColor() {
             var arrColors = ["1d1481", "9f3053", "c0cb74", "008b77", "0084db", "000000", "ffffff"];
-            
+
             return arrColors[Math.floor(Math.random() * arrColors.length)];
         }
 
-        console.log(getRandomColor())
+        var chosenColors = []
+
+        for (var i = 0; i < 400; i++) {
+            chosenColors.push(getRandomColor())
+        }
+
+        $(function () {
+            $("body").append("<div></div>");
+            var container = $("div").attr("id", "container");
+
+            chosenColors.forEach(function (item, i) {
+                let $line = $("<div></div>").appendTo(container)
+                $line.addClass("basic-line")
+                    .height(randomIntFromInterval(20, 50))
+                    .width(randomIntFromInterval(1000, 2000))
+                    .css('background-color', `#${chosenColors[i]}`)
+                    .css('opacity', (randomIntFromInterval(5, 10)/ 10))
+                    .css('transform', `rotate(${Math.random() * 360}deg`)
+                    .css('top', `${randomIntFromInterval(0, $(document).height())}px`)
+            })
+
+
+        })
     </script>
 </body>
+
 </html>
