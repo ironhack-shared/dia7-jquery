@@ -11,6 +11,7 @@
             /* background-color: grey; */
             /* border: 1px solid black; */
             position: absolute;
+            transform-origin: 50% 50%;
         }
     </style>
 </head>
@@ -31,7 +32,7 @@
 
         var chosenColors = []
 
-        for (var i = 0; i < 400; i++) {
+        for (var i = 0; i < 20; i++) {
             chosenColors.push(getRandomColor())
         }
 
@@ -39,15 +40,19 @@
             $("body").append("<div></div>");
             var container = $("div").attr("id", "container");
 
+            var documentWidth = 1920
+            var halfDocumentWidth = documentWidth / 2
+
             chosenColors.forEach(function (item, i) {
                 let $line = $("<div></div>").appendTo(container)
                 $line.addClass("basic-line")
                     .height(randomIntFromInterval(20, 50))
-                    .width(randomIntFromInterval(1000, 2000))
+                    .width(randomIntFromInterval(1000, documentWidth))
                     .css('background-color', `#${chosenColors[i]}`)
                     .css('opacity', (randomIntFromInterval(5, 10)/ 10))
                     .css('transform', `rotate(${Math.random() * 360}deg`)
-                    .css('top', `${randomIntFromInterval(0, $(document).height())}px`)
+                    .css('top', `${$(document).height() / 2}px`)
+                    .css('left', `${halfDocumentWidth / 2}px`)
             })
 
 
