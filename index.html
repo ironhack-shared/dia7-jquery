@@ -48,7 +48,15 @@
   <script src="app.js"></script>
   <script>
     $(function () {
-      App.init();
+      // App.init();
+
+      $("input, select").change(function(){
+        console.log($(this).val());
+
+        if ($(this).val() === "password") {
+          $(this).hide()
+        }
+      })
     });
   </script>
 </body>
