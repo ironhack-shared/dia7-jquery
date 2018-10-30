@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .important {
+          color: red;
+          border: 1px solid;
+          transition: all 0.2s;
+          margin: 20px;
+          padding: 15px;
+      }
+  </style>
+</head>
+
+<body>
+    <button id="switch">Switch visibility!!!!</button>
+    <div>
+        <p>
+            Y Einstein dijo: <em>Si quieres conseguir resultados distintos no hagas las cosas de la misma manera</em>
+        </p>
+        <h1>Este es el título de vuestra página</h1>
+        <ul>
+            <li>Arroz</li>
+            <li>Gambas</li>
+            <li>Pimiento</li>
+        </ul>
+    </div>
+
+
+switch
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    $(function () {
+        let secondLi = $("li:eq(1)")
+        
+        secondLi.css("color", "red")
+        setInterval(function () {
+            secondLi.prev().css("color", `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`)
+        }, 9999999500)
+        secondLi.parent().addClass("important")
+
+        $("#switch").on("click", function () {
+            $("ul.important").toggle()
+        })
+    });
+  </script>
+</body>
+
+</html>
